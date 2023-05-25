@@ -1,0 +1,53 @@
+
+
+:root {
+    --primary-color: #203864;
+    --secondary-color: #000;
+    --tertiary-color: #ffb800;
+    --fontSize-title: 4rem;
+    --fontSize-head: 2rem;
+    --fontSize-desc: 1.5rem;
+    --primary-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --secondary-font: "Bookman Old Style", sans-serif;
+    --tertiary-font: "Vollkorn", serif;
+}
+
+.logo-helmet{
+    padding: 0px !important;
+}
+
+.contact{
+    font-size: 1.6rem;
+}
+
+.seat-button:hover{
+    background-color: #203864;
+}
+
+.section__details__content {
+    display: flex;
+    justify-content: space-between;
+    line-height: 2.3rem;
+    width: 100%;
+}
+
+.content__info__graduate {
+    font-size: var(--fontSize-desc);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.content__qr__graduate {
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.section__details__footer {
+    line-height: 23px;
+    font-size: calc(var(--fontSize-desc) - 0.1rem);
+}
+#qr {
+    width: 150px; height: 150px;
+}

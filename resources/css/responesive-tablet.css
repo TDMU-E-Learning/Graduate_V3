@@ -1,0 +1,90 @@
+
+
+
+
+@media screen and (max-width: 1023px) {
+   
+    .search > button{
+        width: 20%;
+    }
+    .hero {
+        min-width: 100vw;
+        height: 100vh;
+    }
+    .header {
+        min-width: 100vw;
+    }
+    .graduation {
+        min-width: 100vw;
+        padding: 0;
+    }
+    .nav {
+        min-width: 100vw;
+        padding: 0 38px;
+    }
+    .section {
+        justify-content:start;
+        width: 90vw;
+        margin-top: 30px;
+        height: calc(100vh - 78px - 40px - 30px);
+    }
+    .nav, .section__tablet, .section__content {
+        padding: 0 20px;
+        width: 100%;
+    }
+    /* set color font */
+    .contact,
+    .text-copyright,
+    .content__text__heading,
+    .content__text__heading .text-title,
+    .content__text__heading .text-university,
+    .content__text__heading .text-year,
+    .content__text__description,
+    .section__result__heading,
+    .section__subheading,
+    .section__result__content,
+    .section__result__footer{
+       
+    }
+
+    .content__text__heading {
+        font-weight: bold;
+    }
+    .content__text__heading .text-title {
+        /* font-size: 32px; */
+        padding-top: 6px;
+    }
+    .content__text__heading .text-university {
+        /* font-size: 40px; */
+    }
+    .content__text__heading .text-year {
+        /* font-size: 30px; */
+    }
+    .content__text__description {
+        /* font-size: 16px;  */
+        padding: 2rem 0 4rem;
+    }
+    /* .section__tablet {
+        display: block;
+        width: 100vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    } */
+    .content__search__form {
+        margin-bottom: 4rem;
+    }
+   
+  
+
+
+    /*DETAILS PAGE TABLET */
+    .section__result {
+        width: 90%;
+        margin-top: 80px;
+    }
+    .section__details__footer {
+        margin-top: 40px;
+    }
+  }
