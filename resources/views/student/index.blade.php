@@ -19,10 +19,11 @@
         </div>
       @endif
         <x-link route="student.create" text="Thêm" color="grey"/>
-        <x-primary-button>
+        <x-primary-button id="btnPopup">
           {{__('Thêm bằng csv')}}
         </x-primary-button>
-        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg" style="margin-top: 6px;">
+        <x-link route="student.destroyAll" text="Xóa tất cả dữ liệu" color="grey"/>
+        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg" style="margin-top: 6px; display: none;" id="popup">
           <div class="p-6 text-gray-900 dark:text-gray-100">
             <x-link route="excel.download" text="Tải mẫu .csv" color="grey" />
               <x-submit-form-button formId="uploadForm" text="Tải lên hàng loạt" />
@@ -36,11 +37,11 @@
         </div>
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg" style="margin-top: 6px;">
           <div class="p-6 text-gray-900 dark:text-gray-100">
-            <table class="table table-hover">
+            <table class="table table-hover" style="font-size: 0.8rem;">
               <thead>
                 <tr>
                   <th>STT</th>
-                  <th>Mã sinh viên/học viên</th>
+                  <th>MSSV/MSHV</th>
                   <th>Họ tên</th>
                   <!-- <th>Hình ảnh</th> -->
                   <th>Loại bằng</th>
@@ -76,7 +77,7 @@
       </div>
     </div>
 </x-app-layout>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
     const successMessage = document.getElementById('successMessage');
 
@@ -92,4 +93,15 @@
             document.getElementById('deleteForm' + id).submit();
         }
     }
+
+    $(document).ready(function(){
+      $('#btnPopup').click(function(){
+        if($('#popup').css("display") == 'none'){
+          $('#popup').show();
+        }
+        else{
+          $('#popup').removeAttr('style').hide();
+        }
+      });
+    });
 </script>

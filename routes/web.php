@@ -39,7 +39,7 @@ Route::post('/result', [StudentController::class, 'show']);
 Route::resource('/student', StudentController::class)->middleware(['auth', 'verified']);
 
 Route::post('/upload-excel', [StudentController::class, 'upload'])->middleware(['auth', 'verified'])->name('student.upload');
-Route::get('/destroy-all', [StudentController::class, 'destroyAll']);
+Route::get('/destroy-all', [StudentController::class, 'destroyAll'])->middleware(['auth', 'verified'])->name('student.destroyAll');
 
 Route::get('/download-excel', function(){
     $file = public_path('Files/mau_them_danh_sach_svhv_tot_nghiep.csv');

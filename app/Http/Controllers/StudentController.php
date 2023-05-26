@@ -117,10 +117,10 @@ class StudentController extends Controller
     {
         $file = $request->file('excelFile');
         if ($file === null) {
-            return redirect()->back()->with('message', 'Chưa được đính kèm tệp.');
+            return redirect()->back()->with('message', 'Chưa đính kèm tệp.');
         }
         if ($file->getClientOriginalExtension() !== 'csv') {
-            return redirect()->back()->with('message', 'Vui lòng đính kèm tệp csv');
+            return redirect()->back()->with('message', 'Vui lòng đính kèm tệp có định dạng csv');
         }
         $path = $file->getRealPath();
     
