@@ -37,7 +37,7 @@
         width: 100vw;
         margin: 20px auto 0;
         height: calc(85vh - 90px);
-        padding: 10px;
+        padding: 10px 10px 100px;
         overflow: scroll;
     }
     .logo-mobile {
@@ -162,8 +162,10 @@
     }
     .section {
         width: calc(100% - 10px);
-        padding: 10px;
+        height: calc(85vh - 90px);
+        padding: 10px 10px 80px;
     }
+    
     .section__footer {
         font-size: calc(var(--fontSize-desc) + 0);
     }

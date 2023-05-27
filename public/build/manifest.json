@@ -1,21 +1,26 @@
 {
+  "resources/css/app-base.css": {
+    "file": "assets/app-base-7fad352d.css",
+    "isEntry": true,
+    "src": "resources/css/app-base.css"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-fc22833f.css",
+    "file": "assets/app-a06e4907.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/css/graduate__result.css": {
-    "file": "assets/graduate__result-83e994f2.css",
+    "file": "assets/graduate__result-30ca5764.css",
     "isEntry": true,
     "src": "resources/css/graduate__result.css"
   },
   "resources/css/responesive-tablet.css": {
-    "file": "assets/responesive-tablet-9f08ca3c.css",
+    "file": "assets/responesive-tablet-a93e8cec.css",
     "isEntry": true,
     "src": "resources/css/responesive-tablet.css"
   },
   "resources/css/responsive-mobile.css": {
-    "file": "assets/responsive-mobile-7f9792e2.css",
+    "file": "assets/responsive-mobile-c9114f9b.css",
     "isEntry": true,
     "src": "resources/css/responsive-mobile.css"
   },
