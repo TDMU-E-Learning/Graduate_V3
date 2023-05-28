@@ -138,22 +138,17 @@
 }
 @media screen and (max-width: 400px) {
     :root {
-        --fontSize-title: 3.2rem;
+        --fontSize-title: 2.6rem;
         --fontSize-head: 1.5rem;
         --fontSize-desc: 1.2rem;
     }
-    #info__title, #qr__title, .section__details__footer .section__subheading{
+    /* #info__title, #qr__title, .section__details__footer .section__subheading{
         font-size: 2rem;
-    }
-    .content__info__graduate .content{
+    } */
+    /* .content__info__graduate .content{
         font-size: 1.4rem !important;
-    }
-    .section__details__footer{
-        font-size: 1.4rem;
-    }
-    .section__details__content{
-        line-height: 2.5rem;
-    }
+    } */
+ 
     .hero {
         min-width: 100vw;
     }
