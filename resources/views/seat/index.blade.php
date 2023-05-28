@@ -119,11 +119,18 @@
     <script>
         // seat start -> row number -> column number -> id box
         var pathName = window.location.href;
-        console.log(pathName);
+        
         var number = 0;
-        for (var i = pathName.length - 3; i <= pathName.length - 1; i++) {
-            number = number * 10 + parseInt(pathName[i]);
-            console.log(number)
+        var seat = "";
+        for (var i = pathName.length - 1; i >= 0; i--) {
+            if (pathName[i] == '/') {
+                break;
+            }
+            seat = pathName[i] + seat;
+        }
+        console.log(seat);
+        for (var i = 0; i < seat.length; i++) {
+            number = number * 10 + parseInt(seat[i]);
         }
 
         function renderSeat(choose, opts, idBox) {
