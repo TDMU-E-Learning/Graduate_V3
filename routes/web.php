@@ -49,7 +49,9 @@ Route::middleware('auth')->group(function () {
 
     // Presentation routes
     Route::get('/presentation', [PresentationController::class, 'show']);
-
+    Route::get('/main-people', function () {
+        return view('main-people');
+    });
     // Validator
     Route::get('/queue', [ValidatorController::class, 'showQueue']);
 

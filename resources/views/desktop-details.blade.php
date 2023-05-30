@@ -94,7 +94,6 @@
         var pixelValueInt = Math.floor(pixelValue) - 100 - 90 - 20;
         sectionElement.style.height = pixelValueInt + 'px';
         console.log(pixelValueInt + 'px');
-        alert(pixelValueInt)
     </script>
 </body>
 
