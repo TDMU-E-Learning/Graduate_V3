@@ -17,3 +17,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/socket_server/node_modules
+/socket_server/package-lock.json
