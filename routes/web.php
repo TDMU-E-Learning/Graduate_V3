@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ValidatorController;
+use App\Http\Controllers\ScanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,9 @@ Route::middleware('auth')->group(function () {
 
     // Validator
     Route::get('/queue', [ValidatorController::class, 'showQueue']);
+
+    //Scan
+    Route::get('/scan', [ScanController::class, 'showScan']);
 });
 
 require __DIR__.'/auth.php';
