@@ -1,4 +1,3 @@
-var socket = io('http://localhost:3000');
 
 socket.on('push-to-check', function(data){
   var table = document.getElementById('data-table');

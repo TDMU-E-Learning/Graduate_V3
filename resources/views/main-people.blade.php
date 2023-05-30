@@ -4,6 +4,6 @@
     <button type="submit" onclick="stop()"></button>
 
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
-    <script src="{{ asset('assets/js/main-people.js') }}"></script>
     <script src="{{ asset('assets/js/socket.js') }}"></script>
+    <script src="{{ asset('assets/js/main-people.js') }}"></script>
 </x-app-layout>
