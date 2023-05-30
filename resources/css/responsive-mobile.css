@@ -9,13 +9,9 @@
 
 @media screen and (max-width: 767px) {
     :root {
-        --fontSize-title: 3.5rem;
+        --fontSize-title: 3rem;
         --fontSize-head: 2rem;
         --fontSize-desc: 1.3rem;
-    }
-    .left1, .right {
-        width: 100vw;
-        height: 100vh;
     }
     .logo,
     .section__tablet,
@@ -29,17 +25,19 @@
     .graduation {
         min-width: 100vw;
     }
+    .content__text__description {
+        display: none;
+    }
     .logo-mobile,
     .section__mobile {
         display: block;
     }
-    .section {
+    .section__details {
         width: 100vw;
         margin: 20px auto 0;
-        height: calc(85vh - 90px);
-        padding: 10px 10px 100px;
         overflow: scroll;
     }
+    
     .logo-mobile {
         width: 88px;
         height: 77px;
@@ -56,9 +54,6 @@
         flex-direction: column;
         gap: 15px 0;
     }
-    .section__result {
-        padding: 0;
-    }
     #qr {
         width: 100%;
         max-width: 250px;
@@ -66,37 +61,24 @@
         max-height: 250px;
     }
     /* text */
-    .contact,
+    /* .contact,
     .text-copyright,
     .content__text__heading,
     .content__text__heading .text-title,
     .content__text__heading .text-university,
     .content__text__heading .text-year,
     .content__text__description {
-        /* color: #F5F5F5; */
         text-align: center;
-    }
+    } */
     .content__text__heading {
         font-weight: bold;
         line-height: 2.7rem;
     }
     .content__text__heading .text-title {
         /* font-size: 15px; */
-        line-height: 5rem;
+        line-height:3rem;
     }
-    .content__text__heading .text-university {
-        font-size: 2.5rem;
-    }
-    .content__text__heading .text-year {
-        font-size: 1.8rem;
-    }
-    .content__text__description {
-        /* font-size: 13px; 
-        line-height: 25px;
-        margin-top: 15px;
-        margin-bottom: 30px; */
-        display: none;
-    }
+
     .search input::placeholder{
         font-size: 1rem;
     }
@@ -129,36 +111,24 @@
         font-size: 12px;
     }
 
-    /* result content section */
-
-    .section__result__content {
-        flex-direction: column;
-        gap: 20px 0;
-    }
+    
 }
 @media screen and (max-width: 400px) {
     :root {
-        --fontSize-title: 2.6rem;
-        --fontSize-head: 1.5rem;
+        --fontSize-title: 2.5rem;
+        --fontSize-head: 1.8rem;
         --fontSize-desc: 1.2rem;
     }
-    /* #info__title, #qr__title, .section__details__footer .section__subheading{
-        font-size: 2rem;
-    } */
-    /* .content__info__graduate .content{
-        font-size: 1.4rem !important;
-    } */
  
     .hero {
         min-width: 100vw;
     }
     .graduation {
         min-width: 100vw;
+        height: 100vh;
     }
     .section {
         width: calc(100% - 10px);
-        height: calc(85vh - 90px);
-        padding: 10px 10px 80px;
     }
     
     .section__footer {
@@ -166,13 +136,34 @@
     }
     .section__subheading {
         font-size: calc(var(--fontSize-head) - 0rem);
+        line-height: 1rem;
     }
-    .content__search__form input {
-        /* height: 35px;
-        margin-bottom: 5px; */
-    }
+
     .text-copyright {
         /* font-size: 10px; */
         font-size: calc(var(--fontSize-desc) - 0.3rem);
+        
+    }
+
+    .text-year {
+        font-size: 1.6rem !important;
+    }
+    .footer__text {
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    
+}
+
+
+@media screen and (max-width: 281px) {
+    .section {
+        width: 100vw;
+        margin: 20px auto 0;
+        overflow: scroll;
+    }
+
+    .section__subheading {
+        font-size: calc(var(--fontSize-head) - 0.4rem) ;    
     }
 }

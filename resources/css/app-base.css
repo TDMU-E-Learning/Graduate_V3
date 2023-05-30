@@ -12,8 +12,8 @@
     --primary-color: #203864;
     --secondary-color: #000;
     --tertiary-color: #ffb800;
-    --fontSize-title: 4.5rem;
-    --fontSize-head: 2rem;
+    --fontSize-title: 3.5rem;
+    --fontSize-head: 2.5rem;
     --fontSize-desc: 1.6rem;
     --fontSize-placeholder-desc: 1.3rem;
     /* --primary-font: "Montserrat", sans-serif; */
@@ -21,7 +21,9 @@
     --secondary-font: "Bookman Old Style", sans-serif;
     --tertiary-font: "Vollkorn", serif;
 }
-
+*{
+    box-sizing: border-box;
+}
 html {
     font-size: 62.5%;
     font-family: var(--primary-font);
@@ -38,6 +40,7 @@ body {
 }
 .graduation {
     width: 100%;
+
 }
 .header {
     width: 100%;
@@ -63,9 +66,8 @@ body {
     flex-direction: column;
     align-items: center;
     width: calc(80vw - 60px);
-    height: calc(100vh - 90px);
+    height: calc(100vh - 90px - 100px);
     margin: 0 auto;
-    padding: 0 30px;
 }
 .section__content {
     width: 100%;
@@ -87,6 +89,7 @@ body {
     font-family: var(--tertiary-font);
     font-weight: 700;
     text-transform: uppercase;
+    line-height: 1rem;
 }
 .section__subheading {
     color: var(--primary-color);
@@ -97,13 +100,13 @@ body {
     margin-bottom: 15px;
 }
 .content__text__heading{
-    line-height: 3rem;
+    line-height: 2.7rem;
 }
 .content__text__heading .text-year{
-    font-size: calc(var(--fontSize-title) - 2rem);
+    font-size: calc(var(--fontSize-title) - 1.5rem);
 }
 .content__text__heading .text-university {
-    font-size: calc(var(--fontSize-title) - 1.5rem);
+    font-size: calc(var(--fontSize-title) - 0);
 }
 .content__text__description {
     color: #555555;
@@ -112,7 +115,7 @@ body {
     font-size: calc(var(--fontSize-desc) - 0.2rem);
     font-style: italic;
     padding: 1.5rem 0;
-    line-height: 1.5rem;
+    line-height: 2rem;
 }
 .search-form {
     width: 100%;
@@ -190,9 +193,9 @@ body {
 
 .right {
     background-color: var(--tertiary-color);
-    clip-path: polygon(100% 85%, 25% 100%, 100% 100%);
+    clip-path: polygon(100% 0, 25% 100%, 100% 100px);
     width: 100%;
-    height: 100%;
+    height: 100px;
     position: fixed;
     bottom: 0;
     right: 0;
@@ -200,9 +203,9 @@ body {
 }
 .left1 {
     background-color: var(--primary-color);
-    clip-path: polygon(0 85%, 0 100%, 75% 100%);
+    clip-path: polygon(0 0, 0 100px, 75% 100px);
     width: 100%;
-    height: 100%;
+    height: 100px;
     position: fixed;
     bottom: 0;
     left: 0;

@@ -4,7 +4,7 @@
     --primary-color: #203864;
     --secondary-color: #000;
     --tertiary-color: #ffb800;
-    --fontSize-title: 4rem;
+    --fontSize-title: 3.5rem;
     --fontSize-head: 2rem;
     --fontSize-desc: 1.5rem;
     --primary-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -23,7 +23,9 @@
 .seat-button:hover{
     background-color: #203864;
 }
-
+.text-title {
+    padding: 2rem 0;
+}
 .section__details__content {
     display: flex;
     justify-content: space-between;
@@ -45,7 +47,7 @@
     align-items: center;
 }
 .section__details__footer {
-    line-height: 23px;
+    line-height: 1.8rem;
     font-size: calc(var(--fontSize-desc) - 0.1rem);
 }
 #qr {
