@@ -10,6 +10,7 @@ use App\Models\StudentImport;
 use App\Imports\StudentTollectionImport;
 use Illuminate\Support\Facades\Redirect;
 use SplFileObject;
+
 class StudentController extends Controller
 {
     /**
@@ -18,7 +19,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::paginate(10);
-        return view('student.index', compact('students'))->with('i', (request()->input('page', 1) -1) *5);
+        return view('student.index', compact('students'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -44,7 +45,7 @@ class StudentController extends Controller
     public function show(Request $request)
     {
         $id = $request->input('student-id');
-        if($id == ""){
+        if ($id == "") {
             return Redirect::to('/')->with('message', 'Vui lòng nhập MSSV/MSHV');
         }
         if ($id) {
@@ -65,7 +66,7 @@ class StudentController extends Controller
     {
         $student = Student::find($id);
 
-        if(!$student){
+        if (!$student) {
             return redirect()->route('student.index');
         }
 
@@ -79,7 +80,7 @@ class StudentController extends Controller
     {
         $student = Student::find($id);
 
-        if(!$student){
+        if (!$student) {
             return redirect()->route('student.index')->with('error', 'Thông tin không tồn tại.');
         }
 
@@ -104,7 +105,7 @@ class StudentController extends Controller
     {
         $student = Student::find($id);
 
-        if(!$student){
+        if (!$student) {
             return redirect()->route('student.index');
         }
 
@@ -123,10 +124,10 @@ class StudentController extends Controller
             return redirect()->back()->with('message', 'Vui lòng đính kèm tệp có định dạng csv');
         }
         $path = $file->getRealPath();
-    
+
         $csv = new SplFileObject($path, 'r');
         $csv->setFlags(SplFileObject::READ_CSV);
-        
+
         $student = [];
         $temp = 0;
         foreach ($csv as $row) {
@@ -150,9 +151,18 @@ class StudentController extends Controller
 
         return redirect()->back()->with('message', 'Tệp đã được tải lên và dữ liệu đã được lưu vào cơ sở dữ liệu.');
     }
-    
-    public function destroyAll() {
+
+    public function destroyAll()
+    {
         DB::table('students')->truncate();
         return redirect()->back()->with('message', 'Đã xóa toàn bộ dữ liệu.');
+    }
+
+    public function downloadSampleExcel()
+    {
+        $file = public_path('Files/mau_them_danh_sach_svhv_tot_nghiep.csv');
+        $headers = ['Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
+
+        return response()->download($file, 'file.csv', $headers);
     }
 }

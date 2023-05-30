@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\QueueController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +15,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/test', function (Request $request) {
+    return 'Hello';
 });
+
+Route::post('/result', [StudentController::class, 'show']);
+
+Route::middleware(['auth.session'])->group(function () {
+    Route::get('/queue', [QueueController::class, 'getAll']);
+    Route::post('/upload-excel', [StudentController::class, 'upload'])->name('student.upload');
+});
+
+
