@@ -8,7 +8,7 @@ socket.on('push-to-check', function(data){
   // var degreeCell = newRow.insertCell();
   // var majourCell = newRow.insertCell();
 
-  studentIdCell.innerHTML = data['studentId'];
+  studentIdCell.innerHTML = data;
   // nameCell.innerHTML = data['name'];
   // degreeCell.innerHTML = data['degree'];
   // majourCell.innerHTML = data['majour'];
@@ -16,7 +16,7 @@ socket.on('push-to-check', function(data){
 
 $(document).ready(function(){
   $('#btnSubmit').on('click', function(){
-    let studentId = document.getElementById('txtStudentId').innerText;
+    let studentId = document.getElementById('txtStudentId').value;
     socket.emit('push-to-check', studentId);
   });
 });
