@@ -7,17 +7,18 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-whitedark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white bg-whitedark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 dark:text-gray-100">
-                    <table class="table-auto">
+                    <table class="table-auto" id="data-table">
                         <thead>
                             <tr>
-                                <th>MSSV</th>
+                                <th>MSSV/MSHV</th>
                                 <th>Họ và tên</th>
-                                <th>Ngành</th>
+                                <th>Loại bằng</th>
+                                <th>Chuyên ngành</th>
                             </tr>
                         </thead>
-                        <tbody id="data-table"></tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
             </div>
@@ -25,6 +26,6 @@
     </div>
 
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
-    <script src="{{ asset('assets/js/queue.js') }}"></script>
     <script src="{{ asset('assets/js/socket.js') }}"></script>
+    <script src="{{ asset('assets/js/queue.js') }}"></script>
 </x-app-layout>
