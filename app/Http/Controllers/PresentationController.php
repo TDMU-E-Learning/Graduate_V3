@@ -8,4 +8,8 @@ class PresentationController extends Controller
     {
         return view('presentation.presentation');
     }
+
+    public function showQueue(){
+        return view('presentation.mc');
+    }
 }

@@ -16,16 +16,26 @@
 //     });
 // }
 
+function pushToMC(data){
+  socket.emit('push-to-mc', data);
+}
+
 socket.on('push-to-check', function(data){
-    var table = document.getElementById('data-table');
-    var newRow = table.insertRow();
-    var studentIdCell = newRow.insertCell();
-    // var nameCell = newRow.insertCell();
-    // var degreeCell = newRow.insertCell();
-    // var majourCell = newRow.insertCell();
-  
-    studentIdCell.innerHTML = data;
-    // nameCell.innerHTML = data['name'];
-    // degreeCell.innerHTML = data['degree'];
-    // majourCell.innerHTML = data['majour'];
-  });
+  var table = document.getElementById('data-table');
+  var newRow = table.insertRow();
+  var studentIdCell = newRow.insertCell();
+  var nameCell = newRow.insertCell();
+  var degreeCell = newRow.insertCell();
+  var majourCell = newRow.insertCell();
+  var functionCell = newRow.insertCell();
+  var btn = document.createElement('BUTTON');
+  btn.innerHTML = "Thêm";
+  btn.onclick = pushToMC(data);
+
+  studentIdCell.innerHTML = data;
+  nameCell.innerHTML = ""
+  degreeCell.innerHTML = "";
+  majourCell.innerHTML = "";
+  functionCell.appendChild(btn);
+});
+

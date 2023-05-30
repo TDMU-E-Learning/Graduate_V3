@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
 
     // Presentation routes
     Route::get('/presentation', [PresentationController::class, 'show']);
+    Route::get('/mc', [PresentationController::class, 'showQueue']);
     Route::get('/main-people', function () {
         return view('main-people');
     });

@@ -16,7 +16,6 @@
                                 <th>Họ và tên</th>
                                 <th>Loại bằng</th>
                                 <th>Chuyên ngành</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -28,5 +27,5 @@
 
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script src="{{ asset('assets/js/socket.js') }}"></script>
-    <script src="{{ asset('assets/js/queue.js') }}"></script>
+    <script src="{{ asset('assets/js/mc.js') }}"></script>
 </x-app-layout>
