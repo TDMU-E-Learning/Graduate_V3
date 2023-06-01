@@ -1,4 +1,4 @@
-socket.on('push-to-mc', function(){
+socket.on('push-to-mc', function(data){
   var table = document.getElementById('data-table');
   var newRow = table.insertRow();
   var studentIdCell = newRow.insertCell();

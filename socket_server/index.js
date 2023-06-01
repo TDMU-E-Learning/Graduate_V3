@@ -19,14 +19,21 @@ io.on("connection", socket => {
     socket.on('show', msg => {
         socket.broadcast.emit('show', msg);
     });
+
     socket.on('pause-present', msg => {
         console.log(msg)
     });
+
     socket.on('swap-student', data => {
         
     })
+
     socket.on('push-to-check', (data) => {
         io.emit('push-to-check', data);
+    });
+
+    socket.on('push-to-mc', data => {
+        io.emit('push-to-mc', data);
     });
 });
 
