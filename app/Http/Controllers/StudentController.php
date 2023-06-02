@@ -73,6 +73,22 @@ class StudentController extends Controller
         return view('student.edit', compact('student'));
     }
 
+    public function find(Request $request){
+        $id = $request->input('student_id');
+        if(!$id){
+            return response()->json(['error' => 'Vui lòng nhập mã'], 404);
+        }
+        $id = str_replace(' ', '', $id);
+        $id = strtoupper($id);
+        $student = $students = DB::select("SELECT * FROM STUDENTS WHERE student_id='$id'");;
+
+        if(!$student){
+            return response()->json(['error' => 'Không tìm thấy thông tin của mã này'], 404);
+        }
+
+        return response()->json(['student' => $student], 200);
+    }
+
     /**
      * Update the specified resource in storage.
      */

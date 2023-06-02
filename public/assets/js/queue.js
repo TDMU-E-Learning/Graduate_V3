@@ -20,6 +20,12 @@ function pushToMC(data){
   socket.emit('push-to-mc', data);
 }
 
+function handleClick(event, data){
+  event.preventDefault();
+
+  pushToMC(data);
+}
+
 socket.on('push-to-check', function(data){
   var table = document.getElementById('data-table');
   var newRow = table.insertRow();
@@ -30,12 +36,14 @@ socket.on('push-to-check', function(data){
   var functionCell = newRow.insertCell();
   var btn = document.createElement('BUTTON');
   btn.innerHTML = "Thêm";
-  btn.onclick = pushToMC(data);
+  btn.addEventListener('click', function(event){
+    handleClick(event, data);
+  }, false);
 
-  studentIdCell.innerHTML = data;
-  nameCell.innerHTML = ""
-  degreeCell.innerHTML = "";
-  majourCell.innerHTML = "";
+  studentIdCell.innerHTML = data['student_id'];
+  nameCell.innerHTML = data['name'];
+  degreeCell.innerHTML = data['degree'];
+  majourCell.innerHTML = data['majour'];
   functionCell.appendChild(btn);
 });
 

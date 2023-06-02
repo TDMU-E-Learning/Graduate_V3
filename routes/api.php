@@ -15,13 +15,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::post('/test', function (Request $request) {
-    return 'Hello';
-});
+// Route::post('/test', function (Request $request) {
+//     return 'Hello';
+// });
 
 Route::post('/result', [StudentController::class, 'show']);
 
 Route::middleware(['auth.session'])->group(function () {
+    // get data for ajax :)))))
+    Route::post('find', [StudentController::class, 'find']);
     Route::get('/queue', [QueueController::class, 'getAll']);
     Route::post('/upload-excel', [StudentController::class, 'upload'])->name('student.upload');
 });

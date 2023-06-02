@@ -5,10 +5,9 @@ socket.on('push-to-mc', function(data){
   var nameCell = newRow.insertCell();
   var degreeCell = newRow.insertCell();
   var majourCell = newRow.insertCell();
-  var functionCell = newRow.insertCell();
 
-  studentIdCell.innerHTML = data;
-  nameCell.innerHTML = ""
-  degreeCell.innerHTML = "";
-  majourCell.innerHTML = "";
+  studentIdCell.innerHTML = data['student_id'];
+  nameCell.innerHTML = data['name'];
+  degreeCell.innerHTML = data['degree'];
+  majourCell.innerHTML = data['majour'];
 });
