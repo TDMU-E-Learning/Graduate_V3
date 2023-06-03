@@ -11,8 +11,12 @@ socket.on('push-to-check', function(data){
   nameCell.innerHTML = data['name'];
   degreeCell.innerHTML = data['degree'];
   majourCell.innerHTML = data['majour'];
+  $('#studentId-error').css('display','none');
 });
 
+socket.on('push-to-check-error', (error) => {
+  $('#studentId-error').css('display','block');
+})
 $(document).ready(function(){
   $('#btnSubmit').on('click', function(){
     let studentId = document.getElementById('txtStudentId').value;

@@ -19,7 +19,7 @@
                 <x-navs.nav></x-navs.nav>
             </div>
 
-            <div class="section" id="check1" style="height:100vh;">
+            <div class="section" id="check1">
                 <div class="section__head">
                     <img srcset="{{ asset('assets/img/img-helmet.png') }}" alt=""
                         class="logo-helmet"style="width: 82px;">
@@ -80,19 +80,19 @@
         // var b = window.innerWidth;
         // alert("?" + a + "?" + b); Minh 360w 598hieght
 
-        var sectionElement = document.getElementById('check1');
-        var heightStyle = sectionElement.style.height;
+        // var sectionElement = document.getElementById('check1');
+        // var heightStyle = sectionElement.style.height;
 
-        // Extract the numeric portion of the value
-        var vhValue = parseFloat(heightStyle);
+        // // Extract the numeric portion of the value
+        // var vhValue = parseFloat(heightStyle);
 
-        // Calculate the pixel equivalent
-        var pixelValue = (vhValue / 100) * window.innerHeight;
+        // // Calculate the pixel equivalent
+        // var pixelValue = (vhValue / 100) * window.innerHeight;
 
-        // Convert the pixel value to an integer for whole pixel representation
-        var pixelValueInt = Math.floor(pixelValue) - 100 - 90 - 20;
-        sectionElement.style.height = pixelValueInt + 'px';
-        console.log(pixelValueInt + 'px');
+        // // Convert the pixel value to an integer for whole pixel representation
+        // var pixelValueInt = Math.floor(pixelValue) - 100 - 90 - 20;
+        // sectionElement.style.height = pixelValueInt + 'px';
+        // console.log(pixelValueInt + 'px');
 <<<<<<< Updated upstream
         // alert(pixelValueInt)
 =======

@@ -105,7 +105,7 @@
     .search button {
         width: max-content;
         height: max-content;
-        padding: 2px 15px
+        padding: 2px 15px;
     }
     .text-copyright {
         font-size: 12px;

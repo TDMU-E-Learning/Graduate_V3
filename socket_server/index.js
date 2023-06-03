@@ -44,6 +44,7 @@ io.on("connection", socket => {
             })
             .catch(error => {
                 // Xử lý lỗi
+                io.emit("push-to-check-error", error);
                 console.error(error);
             });
     });
