@@ -1,3 +1,4 @@
+require('dotenv').config();
 const app = require('express')();
 const http = require('http').Server(app);
 const axios = require('axios');
@@ -12,10 +13,10 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-const api = 'http://127.0.0.1:8000/api/find';
+const api = `${process.env.APP_URL}:${process.env.APP_PORT}/api/find`;
 messages = [];
 
-io.on("connection", socket => {
+io.on('connection', socket => {
     console.log('Client was join this socket server');
 
     socket.on('show', msg => {
@@ -28,12 +29,11 @@ io.on("connection", socket => {
 
     socket.on('swap-student', data => {
 
-    })
+    });
 
     socket.on('push-to-check', (data) => {
         axios.post(api, { student_id: data })
             .then(response => {
-                // Xử lý dữ liệu trả về thành công
                 const student = {
                     student_id: response.data.student[0].student_id,
                     name: response.data.student[0].name,
@@ -43,14 +43,13 @@ io.on("connection", socket => {
                 io.emit('push-to-check', student);
             })
             .catch(error => {
-                // Xử lý lỗi
-                io.emit("push-to-check-error", error);
+                io.emit('push-to-check-error', error);
                 console.error(error);
             });
     });
 
     socket.on('push-to-mc', data => {
-        io.emit('push-to-mc', data);
+        socket.broadcast.emit('push-to-mc', data);
     });
 });
 

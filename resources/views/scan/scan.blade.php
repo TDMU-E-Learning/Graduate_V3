@@ -51,5 +51,5 @@
 
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script src="{{ asset('assets/js/socket.js') }}"></script>
-    <script src="{{ asset('assets/js/scan.js') }}"></script>
+    <script src="{{ asset('assets/js/scan.js') }}" type='module'></script>
 </x-app-layout>

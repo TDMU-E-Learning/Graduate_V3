@@ -26,6 +26,8 @@ Route::get('/home', function () {
     return view('index');
 });
 
+Route::post('/result', [StudentController::class, 'show']);
+
 Route::get('/seat/{id}', function ($id) {
     return view('seat.index', ['idSeat' => $id]);
 });
@@ -36,6 +38,7 @@ Route::middleware('auth')->group(function () {
     //Student routes
     Route::resource('/student', StudentController::class);
     Route::get('/destroy-all', [StudentController::class, 'destroyAll'])->name('student.destroyAll');
+    Route::post('/upload-excel', [StudentController::class, 'upload'])->name('student.upload');
 
     // Dashboard routes
     Route::get('/dashboard', function () {

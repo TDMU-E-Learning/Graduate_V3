@@ -19,13 +19,11 @@ use Illuminate\Support\Facades\Route;
 //     return 'Hello';
 // });
 
-Route::post('/result', [StudentController::class, 'show']);
+// get data for ajax :)))))
+Route::post('find', [StudentController::class, 'find']);
 
 Route::middleware(['auth.session'])->group(function () {
-    // get data for ajax :)))))
-    Route::post('find', [StudentController::class, 'find']);
-    Route::get('/queue', [QueueController::class, 'getAll']);
-    Route::post('/upload-excel', [StudentController::class, 'upload'])->name('student.upload');
+    // Route::get('/queue', [QueueController::class, 'getAll']);
 });
 
 

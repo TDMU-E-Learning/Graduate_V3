@@ -40,7 +40,7 @@
                             <br> Để tra cứu thông tin dự lễ, bạn vui lòng nhập MSSV/MSHV vào ô bên dưới và tra cứu
                         </p>
                     </div>
-                    <form action="/api/result" method="POST" class="content__search__form search-form"
+                    <form action="/result" method="POST" class="content__search__form search-form"
                         style="width: 100%;">
                         @csrf
                         <div class="search">
