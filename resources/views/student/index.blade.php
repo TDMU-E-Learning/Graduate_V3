@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+<link rel="stylesheet" href="{{ asset('assets/css/datatable.css') }}">
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -22,7 +24,7 @@
         <x-primary-button id="btnPopup">
           {{__('Thêm bằng csv')}}
         </x-primary-button>
-        <x-link route="student.destroyAll" text="Xóa tất cả dữ liệu" color="grey"/>
+        <x-link route="student.destroyAll" text="Xóa tất cả dữ liệu" color="grey" onclick="return confirm('Bạn có chắc chắn muốn xóa toàn bộ thông tin?'"/>
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg" style="margin-top: 6px; display: none;" id="popup">
           <div class="p-6 text-gray-900 dark:text-gray-100">
             <x-link route="excel.download" text="Tải mẫu .csv" color="grey" />
@@ -37,10 +39,9 @@
         </div>
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg" style="margin-top: 6px;">
           <div class="p-6 text-gray-900 dark:text-gray-100">
-            <table class="table table-hover" style="font-size: 0.8rem;">
+            <table class="table table-hover" id="studentTable">
               <thead>
                 <tr>
-                  <th>STT</th>
                   <th>MSSV/MSHV</th>
                   <th>Họ tên</th>
                   <!-- <th>Hình ảnh</th> -->
@@ -55,7 +56,6 @@
               <tbody>
                 @foreach($students as $student)
                   <tr>
-                    <td>{{++$i}}</td>
                     <td>{{$student->student_id}}</td>
                     <td>{{$student->name}}</td>
                     <!-- <td>{{$student->image}}</td> -->
@@ -65,8 +65,8 @@
                     <td>{{$student->location}}</td>
                     <td>{{$student->seat}}</td>
                     <td style="display: flex; flex-direction: row; justify-content: space-evenly;">
-                      <x-update-button id="{{$student->id}}" />
-                      <x-delete-button id="{{$student->id}}" />
+                      <x-update-button id="{{$student->id}}" style="display: flex; align-items: center;"/>
+                      <x-delete-button id="{{$student->id}}"/>
                     </td>
                   </tr>
                 @endforeach
@@ -78,30 +78,5 @@
     </div>
 </x-app-layout>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script>
-    const successMessage = document.getElementById('successMessage');
-
-    if (successMessage) {
-        setTimeout(function () {
-            successMessage.style.display = 'none';
-            errorMessage.style.display = 'none';
-        }, 5000);
-    }
-
-    function confirmDelete(id) {
-        if (confirm('Bạn có chắc chắn muốn xóa thông tin này?')) {
-            document.getElementById('deleteForm' + id).submit();
-        }
-    }
-
-    $(document).ready(function(){
-      $('#btnPopup').click(function(){
-        if($('#popup').css("display") == 'none'){
-          $('#popup').show();
-        }
-        else{
-          $('#popup').removeAttr('style').hide();
-        }
-      });
-    });
-</script>
+<script src="{{ asset('assets/js/DataTables/datatables.min.js') }}"></script>
+<script src="{{ asset('assets/js/admin.js') }}"></script>

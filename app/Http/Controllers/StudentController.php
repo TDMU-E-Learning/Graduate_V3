@@ -18,8 +18,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::paginate(10);
-        return view('student.index', compact('students'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $students = DB::select("select * from students");
+        return view('student.index', ['students' => $students]);
     }
 
     /**
@@ -51,7 +51,7 @@ class StudentController extends Controller
         if ($id) {
             $id = str_replace(' ', '', $id);
             $id = strtoupper($id);
-            $students = DB::select("SELECT * FROM students WHERE student_id='$id'");
+            $students = DB::select("select * from students where student_id='$id'");
             if ($students) {
                 return view('desktop-details', ['student' => $students[0]]);
             }
@@ -80,7 +80,7 @@ class StudentController extends Controller
         }
         $id = str_replace(' ', '', $id);
         $id = strtoupper($id);
-        $student = $students = DB::select("SELECT * FROM students WHERE student_id='$id'");;
+        $student = $students = DB::select("select * from students where student_id='$id'");;
 
         if(!$student){
             return response()->json(['error' => 'Không tìm thấy thông tin của mã này'], 404);
