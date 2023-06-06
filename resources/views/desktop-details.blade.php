@@ -91,7 +91,7 @@
         var pixelValue = (vhValue / 100) * window.innerHeight;
 
         // Convert the pixel value to an integer for whole pixel representation
-        var pixelValueInt = Math.floor(pixelValue) - 100 - 90 - 20;
+        var pixelValueInt = Math.floor(pixelValue) - 100 - 90;
         sectionElement.style.height = pixelValueInt + 'px';
         console.log(pixelValueInt + 'px');
     </script>
