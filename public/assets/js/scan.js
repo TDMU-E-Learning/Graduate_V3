@@ -1,28 +1,7 @@
-
-socket.on('push-to-check', function (data) {
-  var table = document.getElementById('data-table');
-  var newRow = table.insertRow();
-  var studentIdCell = newRow.insertCell();
-  var nameCell = newRow.insertCell();
-  var degreeCell = newRow.insertCell();
-  var majourCell = newRow.insertCell();
-
-  studentIdCell.innerHTML = data['student_id'];
-  nameCell.innerHTML = data['name'];
-  degreeCell.innerHTML = data['degree'];
-  majourCell.innerHTML = data['majour'];
-  $('#studentId-error').css('display', 'none');
-});
-
-socket.on('push-to-check-error', (error) => {
-  $('#studentId-error').css('display', 'block');
-})
 $(document).ready(function () {
   $('#btnSubmit').on('click', function () {
-    // const apiURL = import.meta.env.SOCKET_URL;
-    // console.log(apiURL);
     let studentId = document.getElementById('txtStudentId').value;
-    socket.emit('push-to-check', studentId);
+    socket.emit('send-student-id', studentId);
     document.getElementById('txtStudentId').value = "";
   });
 
@@ -35,4 +14,44 @@ $(document).ready(function () {
       }
     }
   });
+
+  var table = $('#queueTable').DataTable({
+    ajax: 'http://127.0.0.1:8000/api/show_list_queue',
+    columns:[
+      {data: 'student_id'},
+      {data: 'name'},
+      {data: 'degree'},
+      {data: 'majour'},
+      {data: 'time_at'}
+    ],
+    order: [[4, 'asc']],
+    "dom": '<"#length"lr>fti<"#paging"p>',
+    lengthMenu: [
+      [-1, 10, 25, 50],
+      ['Tất cả', '10', '25', '50']
+    ],
+    buttons: [
+      'pageLength'
+    ]
+  });
+
+  socket.on('refresh_list_queue', function (data) {
+    $('#div-message').show();
+    if(data == 'add successful' || data == 'update successful'){
+      table.ajax.reload();
+      if(data == 'add successful'){
+        $('#message').text('Thêm thành công').css({'color': 'green'});
+      }
+      else{
+        $('#message').text('Cập nhật thành công').css({'color': 'blue'});
+      }
+    }
+    if(data == 'dont exists'){
+      $('#message').text('Không tìm thấy mã này').css({'color': 'red'});
+    }
+  });
+
+  // setInterval( function () {
+  //   table.ajax.reload();
+  // }, 5000 );
 });

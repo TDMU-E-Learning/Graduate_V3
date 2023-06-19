@@ -21,8 +21,8 @@
                         {{ __('Thêm') }}
                     </x-primary-button>
                 </div>
-                <div id="studentId-error" style="color: red; font-weight: bold; margin-top : 10px; display: none;">
-                  Không tìm thấy 
+                <div id="div-message" style="color: red; font-weight: bold; margin-top : 10px; display: none;">
+                    <p id="message"></p>
                 </div>
             </div>
         </div>
@@ -31,13 +31,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white bg-whitedark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 dark:text-gray-100">
-                    <table class="table-auto" id="data-table">
+                    <table class="table-auto" id="queueTable">
                         <thead>
                             <tr>
                                 <th>MSSV</th>
                                 <th>Họ và tên</th>
                                 <th>Loại bằng</th>
                                 <th>Chuyên ngành</th>
+                                <th>Thời gian</th>
                             </tr>
                         </thead>
                         <tbody>

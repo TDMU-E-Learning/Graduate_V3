@@ -4,8 +4,9 @@ use App\Http\Controllers\PresentationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\ValidatorController;
+use App\Http\Controllers\MCController;
 use App\Http\Controllers\ScanController;
+use App\Http\Controllers\SupportMCController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,17 +51,18 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Presentation routes
-    Route::get('/presentation', [PresentationController::class, 'show']);
-    Route::get('/mc', [PresentationController::class, 'showQueue']);
-    Route::get('/main-people', function () {
-        return view('main-people');
+    Route::get('/main_people', function () {
+        return view('main_people');
     });
-    // Validator
-    Route::get('/queue', [ValidatorController::class, 'showQueue']);
+
+    //MC
+    Route::get('/mc', [MCController::class, 'index']);
+
+    //Support MC
+    Route::get('/support-mc', [SupportMCController::class, 'index']);
 
     //Scan
-    Route::get('/scan', [ScanController::class, 'showScan']);
+    Route::get('/scan', [ScanController::class, 'index']);
 });
 
 require __DIR__.'/auth.php';

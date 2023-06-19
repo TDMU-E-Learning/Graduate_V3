@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-<link rel="stylesheet" href="{{ asset('assets/css/datatable.css') }}">
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -77,6 +75,4 @@
       </div>
     </div>
 </x-app-layout>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="{{ asset('assets/js/DataTables/datatables.min.js') }}"></script>
 <script src="{{ asset('assets/js/admin.js') }}"></script>
