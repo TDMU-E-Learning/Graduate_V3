@@ -18,7 +18,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = DB::select("select * from students");
+        $students = DB::select("SELECT * FROM students");
         return view('student.index', ['students' => $students]);
     }
 
@@ -45,17 +45,21 @@ class StudentController extends Controller
     public function show(Request $request)
     {
         $id = $request->input('student-id');
+
         if ($id == "") {
             return Redirect::to('/')->with('message', 'Vui lòng nhập MSSV/MSHV');
         }
+
         if ($id) {
             $id = str_replace(' ', '', $id);
             $id = strtoupper($id);
-            $students = DB::select("select * from students where student_id='$id'");
+            $students = DB::select("SELECT * FROM students WHERE student_id='$id'");
+
             if ($students) {
                 return view('desktop-details', ['student' => $students[0]]);
             }
         }
+
         return Redirect::to('/')->with('message', 'Tra cứu thất bại, không tìm thấy trong CSDL');
     }
 
@@ -75,12 +79,13 @@ class StudentController extends Controller
 
     public function find(Request $request){
         $id = $request->input('student_id');
+
         if(!$id){
             return response()->json(['error' => 'Vui lòng nhập mã'], 404);
         }
         $id = str_replace(' ', '', $id);
         $id = strtoupper($id);
-        $student = $students = DB::select("select * from students where student_id='$id'");;
+        $student = DB::select("SELECT * FROM students WHERE student_id='$id'");
 
         if(!$student){
             return response()->json(['error' => 'Không tìm thấy thông tin của mã này'], 404);
@@ -108,7 +113,6 @@ class StudentController extends Controller
         $student->participation_time = $request->input('participation_time');
         $student->location = $request->input('location');
         $student->seat = $request->input('seat');
-
         $student->save();
 
         return redirect()->route('student.index')->with('message', 'Cập nhật thông tin thành công.');
@@ -133,19 +137,21 @@ class StudentController extends Controller
     public function upload(Request $request)
     {
         $file = $request->file('excelFile');
+
         if ($file === null) {
             return redirect()->back()->with('message', 'Chưa đính kèm tệp.');
         }
+
         if ($file->getClientOriginalExtension() !== 'csv') {
             return redirect()->back()->with('message', 'Vui lòng đính kèm tệp có định dạng csv');
         }
-        $path = $file->getRealPath();
 
+        $path = $file->getRealPath();
         $csv = new SplFileObject($path, 'r');
         $csv->setFlags(SplFileObject::READ_CSV);
 
-        $student = [];
         $temp = 0;
+
         foreach ($csv as $row) {
             if (count($row) >= 8) {
                 $student = [
@@ -158,6 +164,7 @@ class StudentController extends Controller
                     'location' => $row[6],
                     'seat' => $row[7]
                 ];
+
                 if ($temp > 0) {
                     Student::create($student);
                 }
