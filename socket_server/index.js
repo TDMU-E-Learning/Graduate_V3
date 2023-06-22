@@ -40,7 +40,7 @@ io.on('connection', socket => {
     //     socket.broadcast.emit('push-to-mc', data);
     // });
 
-    socket.on('send-student-id', (data) => {
+    socket.on('send_student_id', (data) => {
         axios.post(api + 'create_student_in_queue', { student_id: data })
             .then(response => {
                 io.emit('refresh_list_queue', response.data.message);
@@ -48,6 +48,10 @@ io.on('connection', socket => {
             .catch(error => {
                 console.log(error.data);
             });
+    });
+
+    socket.on('send_next_student', (data) => {
+        io.emit('refresh_screen', data);
     });
 });
 

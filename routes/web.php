@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function () {
 
     //MC
     Route::get('/mc', [MCController::class, 'index']);
+    Route::get('/screen', [MCController::class, 'screen']);
 
     //Support MC
     Route::get('/support-mc', [SupportMCController::class, 'index']);

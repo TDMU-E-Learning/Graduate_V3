@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $('#btnSubmit').on('click', function () {
     let studentId = document.getElementById('txtStudentId').value;
-    socket.emit('send-student-id', studentId);
+    socket.emit('send_student_id', studentId);
     document.getElementById('txtStudentId').value = "";
   });
 

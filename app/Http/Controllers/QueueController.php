@@ -12,6 +12,7 @@ class QueueController extends Controller
         $queues = DB::table('queues')
                     ->select('queues.student_id', 'students.name', 'students.degree', 'students.majour', 'queues.time_at')
                     ->join('students', 'students.student_id', '=', 'queues.student_id')
+                    ->orderBy('queues.time_at')
                     ->get();
         return response()->json(['data' => $queues], 200);
     }

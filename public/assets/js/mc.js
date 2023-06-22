@@ -1,3 +1,5 @@
+let selectedIndex = null;
+
 $(document).ready(function(){
   var table = $('#queueTable').DataTable({
     ajax: 'http://127.0.0.1:8000/api/show_list_queue',
@@ -18,12 +20,16 @@ $(document).ready(function(){
 
   setTimeout(function(){
     $('#queueTable tbody tr:first').addClass('selected');
+    selectedIndex = table.cell(0, 0).data();
+    send_next_student();
   }, 1000);
 
   $('#queueTable tbody').on('click', 'tr', function(){
     if(!$(this).hasClass('selected')){
       table.$('tr.selected').removeClass('selected');
       $(this).addClass('selected');
+      selectedIndex = table.cell($(this).index(), 0).data();
+      send_next_student();
     }
   });
 
@@ -35,6 +41,8 @@ $(document).ready(function(){
       if(nextRow.length){
         table.$('tr.selected').removeClass('selected');
         nextRow.addClass('selected');
+        selectedIndex = table.cell(nextRow.index(), 0).data();
+        send_next_student();
       }
     }
 
@@ -45,6 +53,8 @@ $(document).ready(function(){
       if(preRow.length){
         table.$('tr.selected').removeClass('selected');
         preRow.addClass('selected');
+        selectedIndex = table.cell(preRow.index(), 0).data();
+        send_next_student();
       }
     }
   });
@@ -52,6 +62,25 @@ $(document).ready(function(){
   socket.on('refresh_list_queue', function (data) {
     if(data == 'add successful' || data == 'update successful'){
       table.ajax.reload();
+      setTimeout(() => {
+        var indexes = table.rows().eq( 0 ).filter( function (rowIdx) {
+          return table.cell( rowIdx, 0 ).data() == selectedIndex ? true : false;
+        });
+        table
+          .rows(indexes)
+          .nodes()
+          .to$()
+          .addClass('selected');
+      }, 500);
     }
   });
+
+  function send_next_student(){
+    const student = {
+      name: table.cell(table.$('tr.selected').index(), 0).data(),
+      degree: table.cell(table.$('tr.selected').index(), 0).data(),
+      majour: table.cell(table.$('tr.selected').index(), 0).data()
+    }
+    socket.emit('send_next_student', student);
+  }
 });
