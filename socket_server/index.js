@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-const api = `${process.env.APP_URL}:${process.env.APP_PORT}/api/`;
+const api = `${process.env.APP_URL}/api/`;
 messages = [];
 
 io.on('connection', socket => {

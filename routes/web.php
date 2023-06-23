@@ -56,14 +56,14 @@ Route::middleware('auth')->group(function () {
     });
 
     //MC
-    Route::get('/mc', [MCController::class, 'index']);
-    Route::get('/screen', [MCController::class, 'screen']);
+    Route::get('/mc', [MCController::class, 'index'])->name('mc.index');
+    Route::get('/screen', [MCController::class, 'screen'])->name('screen.index');
 
     //Support MC
-    Route::get('/support-mc', [SupportMCController::class, 'index']);
+    Route::get('/support-mc', [SupportMCController::class, 'index'])->name('support_mc.index');
 
     //Scan
-    Route::get('/scan', [ScanController::class, 'index']);
+    Route::get('/scan', [ScanController::class, 'index'])->name('scan.index');
 });
 
 require __DIR__.'/auth.php';

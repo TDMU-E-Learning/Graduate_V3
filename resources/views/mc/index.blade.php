@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Danh sách nhận bằng') }}
         </h2>
     </x-slot>
 
@@ -26,7 +26,11 @@
         </div>
     </div>
 
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="{{env('SOCKET_URL')}}/socket.io/socket.io.js"></script>
+    <script>
+        var app_url = "{{env('APP_URL')}}";
+        var socket_url = "{{env('SOCKET_URL')}}";
+    </script>
     <script src="{{ asset('assets/js/socket.js') }}"></script>
     <script src="{{ asset('assets/js/mc.js') }}"></script>
 </x-app-layout>

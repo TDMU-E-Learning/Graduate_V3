@@ -1,7 +1,6 @@
 $(document).ready(function () {
-
   var table = $('#queueTable').DataTable({
-    ajax: 'http://127.0.0.1:8000/api/show_list_queue',
+    ajax: `${app_url}/api/show_list_queue`,
     columns:[
       {data: 'student_id'},
       {data: 'name'},

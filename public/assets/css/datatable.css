@@ -5,12 +5,21 @@ table tr td{
   height: 64px;
   vertical-align: middle;
 }
+#queueTable tr td{
+  height: 48px;
+}
 #length select{
   font-size: 16px;
   width: 96px;
 }
 #paging a.current{
-  background-image: linear-gradient(to right, #682DFA, #8B1EE3);
+  background-image: linear-gradient(to right, #1793CB, #0DD9AB);
   color: white !important;
   border: 0px solid;
+}
+#queueTable tbody tr.selected{
+  font-weight: bold;
+}
+:root {
+  --dt-row-selected: 23, 147, 203;
 }

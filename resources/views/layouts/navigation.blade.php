@@ -16,6 +16,21 @@
                         {{ __('Danh sách SV/HV') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('scan.index')" :active="request()->routeIs('scan.index')">
+                        {{ __('Hàng đợi') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('mc.index')" :active="request()->routeIs('mc.index')">
+                        {{ __('Trao bằng') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('support_mc.index')" :active="request()->routeIs('support_mc.index')">
+                        {{ __('Hỗ trợ') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

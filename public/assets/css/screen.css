@@ -1,0 +1,19 @@
+body{
+  margin: 0px;
+  padding: auto;
+  background-image: linear-gradient(to right, #1793CB, #0DD9AB);
+}
+.hero{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  font-weight: bold;
+}
+#degree, #majour{
+  font-size: 24px;
+}
+#name{
+  font-size: 64px;
+}
