@@ -8,17 +8,6 @@ use App\Http\Controllers\MCController;
 use App\Http\Controllers\ScanController;
 use App\Http\Controllers\SupportMCController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', function () {
     return view('index');
 });
@@ -33,13 +22,16 @@ Route::get('/seat/{id}', function ($id) {
     return view('seat.index', ['idSeat' => $id]);
 });
 
-Route::get('/download-excel', [StudentController::class, 'downloadSampleExcel'])->name('excel.download');
+Route::get('/download-excel', [StudentController::class, 'downloadSampleExcel'])
+    ->name('excel.download');
 
 Route::middleware('auth')->group(function () {
     //Student routes
     Route::resource('/student', StudentController::class);
-    Route::get('/destroy-all', [StudentController::class, 'destroyAll'])->name('student.destroyAll');
-    Route::post('/upload-excel', [StudentController::class, 'upload'])->name('student.upload');
+    Route::get('/destroy-all', [StudentController::class, 'destroyAll'])
+        ->name('student.destroyAll');
+    Route::post('/upload-excel', [StudentController::class, 'upload'])
+        ->name('student.upload');
 
     // Dashboard routes
     Route::get('/dashboard', function () {
@@ -47,9 +39,12 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
 
     // Profile routes
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile', [ProfileController::class, 'edit'])
+        ->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])
+        ->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])
+        ->name('profile.destroy');
 
     Route::get('/main_people', function () {
         return view('main_people');
