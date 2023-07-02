@@ -11,6 +11,15 @@ else{
 }
 @endphp
 
-<a href="{{ route($route) }}" {{ $attributes->merge(['class' => $classes, 'style' => $styles]) }}>
-  {{ $text }}
-</a>
+@if ($route == 'student.create')
+  <a href="{{ route($route) }}" {{ $attributes->merge(['class' => $classes, 'style' => $styles]) }}>
+    {{ $text }}
+  </a>
+@else
+  <form action="{{ route('student.destroyAll') }}" method="delete" {{ $attributes->merge(['class' => $classes, 'style' => $styles]) }} id="clearForm">
+    @csrf
+    <a class="cursor-pointer text-white">
+      {{ $text }}
+    </a>
+  </form>
+@endif

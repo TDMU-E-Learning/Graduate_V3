@@ -12,6 +12,11 @@ function confirmDelete(id) {
     document.getElementById('deleteForm' + id).submit();
   }
 }
+function confirmClearAll() {
+  if (confirm('Bạn có chắc chắn muốn xóa toàn bộ thông tin?')) {
+    document.getElementById('clearForm').submit();
+  }
+}
 
 $(document).ready(function () {
   $('#studentTable').DataTable({

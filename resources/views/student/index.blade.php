@@ -22,7 +22,7 @@
         <x-primary-button id="btnPopup">
           {{__('Thêm bằng csv')}}
         </x-primary-button>
-        <x-link route="student.destroyAll" text="Xóa tất cả dữ liệu" color="grey" onclick="return confirm('Bạn có chắc chắn muốn xóa toàn bộ thông tin?'"/>
+        <x-link route="student.destroyAll" text="Xóa tất cả dữ liệu" color="grey" onclick="confirmClearAll()"/>
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg" style="margin-top: 6px; display: none;" id="popup">
           <div class="p-6 text-gray-900 dark:text-gray-100">
             <x-link route="excel.download" text="Tải mẫu .csv" color="grey" />
