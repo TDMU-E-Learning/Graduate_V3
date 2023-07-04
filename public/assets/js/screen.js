@@ -4,4 +4,6 @@ $(document).ready(function(){
     $('#degree').text(data.degree);
     $('#majour').text(data.majour);
   });
+  socket.emit('get_tmp_student');
 });
+

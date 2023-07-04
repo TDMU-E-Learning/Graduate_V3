@@ -1,13 +1,16 @@
+
+
 $(document).ready(function () {
   $('#btnSubmit').on('click', function () {
-    let studentId = document.getElementById('txtStudentId').value;
+    let studentId = $('#txtStudentId').val();
     socket.emit('send_student_id', studentId);
-    document.getElementById('txtStudentId').value = "";
+    $('#txtStudentId').val("");
+    console.log(studentId);
   });
 
   $('#txtStudentId').keydown(function (e) {
     if (e.keyCode == 13) {
-      let studentId = document.getElementById('txtStudentId').value;
+      let studentId = $('#txtStudentId').val();
       console.log(studentId)
       if (studentId) {
         $('#btnSubmit').click();
@@ -37,18 +40,19 @@ $(document).ready(function () {
 
   socket.on('refresh_list_queue', function (data) {
     $('#div-message').show();
-    if(data == 'add successful' || data == 'update successful'){
+    if(data.messages == 'add successful' || data.messages == 'update successful'){
       table.ajax.reload();
-      if(data == 'add successful'){
+      if(data.messages == 'add successful'){
         $('#message').text('Thêm thành công').css({'color': 'green'});
       }
       else{
         $('#message').text('Cập nhật thành công').css({'color': 'blue'});
       }
     }
-    if(data == 'dont exists'){
+    if(data.messages == 'dont exists'){
       $('#message').text('Không tìm thấy mã này').css({'color': 'red'});
     }
+    
   });
 
   // setInterval( function () {

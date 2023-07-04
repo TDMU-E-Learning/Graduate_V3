@@ -8,9 +8,9 @@
 </head>
 <body>
   <div class="hero">
-    <p id="degree">Tân kỹ sư</p>
-    <p id="name">Lý Tường Huy</p>
-    <p id="majour">Chuyên ngành Kỹ thuật phần mềm</p>
+    <p id="degree">0</p>
+    <p id="name">0</p>
+    <p id="majour">0</p>
   </div>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

@@ -1,6 +1,6 @@
 let selectedIndex = null;
 
-$(document).ready(function(){
+$(document).ready( function(){
   var table = $('#queueTable').DataTable({
     ajax: `${app_url}/api/show_list_queue`,
     columns:[
@@ -18,10 +18,22 @@ $(document).ready(function(){
     ],
   });
 
-  setTimeout(function(){
-    $('#queueTable tbody tr:first').addClass('selected');
-    selectedIndex = table.cell(0, 0).data();
+  var row_continue = 0;
+  socket.emit("join", "mc");
+  
+  socket.on("continue_row", (row) => {
+    if(row !== -1) {
+      if(confirm("Tiếp tục dòng trước đó ?")) row_continue = row;
+    }
+  });
+
+  setTimeout( async function(){
+    var query = "#queueTable tbody tr:nth-child(" + (row_continue + 1).toString() + ")";
+    $(query).addClass('selected');
+    selectedIndex = await table.cell($('tr.selected'), 0).data();
     send_next_student();
+    // set_tmp_student();
+    
   }, 1000);
 
   $('#queueTable tbody').on('click', 'tr', function(){
@@ -59,28 +71,62 @@ $(document).ready(function(){
     }
   });
 
-  socket.on('refresh_list_queue', function (data) {
-    if(data == 'add successful' || data == 'update successful'){
-      table.ajax.reload();
-      setTimeout(() => {
-        var indexes = table.rows().eq( 0 ).filter( function (rowIdx) {
-          return table.cell( rowIdx, 0 ).data() == selectedIndex ? true : false;
-        });
-        table
-          .rows(indexes)
-          .nodes()
-          .to$()
-          .addClass('selected');
+  socket.on('refresh_list_queue', async function (data) {
+    if(data.messages == 'add successful' || data.messages == 'update successful'){
+      await table.ajax.reload();
+      await setTimeout(async () => {
+
+        // set_tmp_student();
+        
+        var query = "#queueTable tbody tr:nth-child(" + (data.index_current + 1).toString() + ")";
+        
+        if(!$(query).hasClass('selected')) $(query).addClass('selected');
+        // var indexes = await table.rows().eq( 0 ).filter( function (rowIdx) {
+        //   return table.cell( rowIdx, 0 ).data() == selectedIndex ? true : false;
+        // });
+
+        // await table
+        //   .rows(indexes)
+        //   .nodes()
+        //   .to$()
+        //   .addClass('selected');
+
+        send_next_student()
       }, 500);
+
+      
     }
+    
   });
 
   function send_next_student(){
+
+
     const student = {
       name: table.cell(table.$('tr.selected').index(), 0).data(),
       degree: table.cell(table.$('tr.selected').index(), 0).data(),
       majour: table.cell(table.$('tr.selected').index(), 0).data()
     }
-    socket.emit('send_next_student', student);
-  }
+    
+    socket.emit('send_next_student', {student, index_row : $('tr.selected').index()});
+  };
+
+  
+  // function set_tmp_student(){
+  //   const student = {
+  //     name: table.cell(table.$('tr:last-child').index(), 0).data(),
+  //     degree: table.cell(table.$('tr:last-child').index(), 0).data(),
+  //     majour: table.cell(table.$('tr:last-child').index(), 0).data()
+  //   };
+  //   console.log(student," => before")
+  //   if(student.name === undefined || student.degree === undefined || student.majour === undefined) {
+  //     student.name = '0';
+  //     student.degree ='0';
+  //     student.majour = '0';
+  //   }
+
+  //   console.log(student, " => AFTER")
+  //   socket.emit('set_tmp_student', student);
+  // }
+
 });
