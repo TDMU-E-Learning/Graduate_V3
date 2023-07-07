@@ -3,7 +3,7 @@ const successMessage = document.getElementById('successMessage');
 if (successMessage) {
   setTimeout(function () {
     successMessage.style.display = 'none';
-    errorMessage.style.display = 'none';
+    // errorMessage.style.display = 'none';
   }, 5000);
 }
 
@@ -38,4 +38,6 @@ $(document).ready(function () {
       $('#popup').removeAttr('style').hide();
     }
   });
+
+  $('#exampleModal').modal('show');
 });

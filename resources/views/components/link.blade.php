@@ -11,7 +11,7 @@ else{
 }
 @endphp
 
-@if ($route == 'student.create')
+@if ($route != 'student.destroyAll')
   <a href="{{ route($route) }}" {{ $attributes->merge(['class' => $classes, 'style' => $styles]) }}>
     {{ $text }}
   </a>

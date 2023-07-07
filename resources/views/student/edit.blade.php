@@ -13,7 +13,7 @@
             @method('PUT')
             <div class="mb-3">
               <label for="student_id" class="form-label">Mã số sinh viên/học viên</label>
-              <input type="text" class="form-control" id="student_id" name="student_id" placeholder="Nhập MSSV/MSHV" value="{{$student->student_id}}">
+              <input type="text" class="form-control" id="student_id" name="student_id" placeholder="Nhập MSSV/MSHV" value="{{$student->student_id}}" readonly>
             </div>
             <div class="mb-3">
               <label for="name" class="form-label">Họ tên sinh viên/học viên</label>

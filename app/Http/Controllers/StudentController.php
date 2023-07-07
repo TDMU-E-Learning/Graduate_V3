@@ -35,6 +35,14 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        $student_id = $request->input('student_id');
+        $student = DB::table('students')->where('student_id', $student_id)->first();
+
+        //check exists student
+        if($student){
+            return redirect()->route('student.create')->with('message', 'Sinh viên đã tồn tại, vui lòng kiểm tra lại MSSV/MSHV');
+        }
+
         Student::create($request->all());
         return redirect()->route('student.index')->with('message', 'Thêm thông tin thành công.');
     }
@@ -151,6 +159,7 @@ class StudentController extends Controller
         $csv->setFlags(SplFileObject::READ_CSV);
 
         $temp = 0;
+        $exists_students = array();
 
         foreach ($csv as $row) {
             if (count($row) >= 8) {
@@ -166,12 +175,21 @@ class StudentController extends Controller
                 ];
 
                 if ($temp > 0) {
-                    Student::create($student);
+                    $exists_student = DB::table('students')->where('student_id', $student['student_id'])->first();
+                    if($exists_student){
+                        array_push($exists_students, $student['student_id']);
+                    }
+                    else
+                    {
+                        Student::create($student);
+                    }
                 }
                 $temp = 1;
             }
         }
-
+        if($exists_students){
+            return redirect()->back()->with('message', 'Tệp đã được tải lên và dữ liệu đã được lưu vào cơ sở dữ liệu.')->with('exists_students', $exists_students);
+        }
         return redirect()->back()->with('message', 'Tệp đã được tải lên và dữ liệu đã được lưu vào cơ sở dữ liệu.');
     }
 

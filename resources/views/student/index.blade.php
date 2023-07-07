@@ -12,7 +12,28 @@
           {{Session::get('message')}}
         </div>
       @endif
-      
+
+      @if(Session::has('exists_students'))
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Danh sách tải không thành công do trùng MSSV/MSHV</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
+              </div>
+              <div class="modal-body">
+                @foreach(Session::get('exists_students') as $value)
+                  <p>{{$value}}</p>
+                @endforeach
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+      @endif
+
       @if (Session::has('error'))
         <div id="errorMessage" class="alert alert-error">
           {{Session::get('error')}}
